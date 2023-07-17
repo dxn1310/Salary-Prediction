@@ -10,7 +10,7 @@ import numpy as np
 
 # data = load_model()
 
-regressor = pickle.load(open('model1.pkl','rb'))
+# regressor = pickle.load(open('model1.pkl','rb'))
 le_country = pickle.load(open('le_country.pkl','rb'))
 le_education = pickle.load(open('le_education.pkl','rb'))
 
@@ -43,17 +43,19 @@ def show_predict_page():
         "Post grad",
     )
 
-    country = st.selectbox("Country", countries)
-    education = st.selectbox("Education Level", education)
+    st.write(f"{type(le_country)}
 
-    expericence = st.slider("Years of Experience", 0, 50, 10)
+    # country = st.selectbox("Country", countries)
+    # education = st.selectbox("Education Level", education)
 
-    ok = st.button("Calculate Salary")
-    if ok:
-        X = np.array([[country, education, expericence ]])
-        X[:, 0] = le_country.transform(X[:,0])
-        X[:, 1] = le_education.transform(X[:,1])
-        X = X.astype(float)
+    # expericence = st.slider("Years of Experience", 0, 50, 10)
 
-        salary = regressor.predict(X)
-        st.subheader(f"The estimated salary is ${salary[0]:.2f}")
+    # ok = st.button("Calculate Salary")
+    # if ok:
+    #     X = np.array([[country, education, expericence ]])
+    #     X[:, 0] = le_country.transform(X[:,0])
+    #     X[:, 1] = le_education.transform(X[:,1])
+    #     X = X.astype(float)
+
+    #     salary = regressor.predict(X)
+    #     st.subheader(f"The estimated salary is ${salary[0]:.2f}")
